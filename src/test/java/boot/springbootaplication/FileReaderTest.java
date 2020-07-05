@@ -17,7 +17,7 @@ public class FileReaderTest {
             + "HelpfulnessDenominator,Score,Time,Summary,Text";
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
-    private FileReaderService fileReaderService = new FileReaderServiceImpl();
+    private final FileReaderService fileReaderService = new FileReaderServiceImpl();
 
     @Test
     public void readFromFileTest() throws IOException {
