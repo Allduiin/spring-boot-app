@@ -12,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.fail;
 
 public class FileParserTest {
-    private final String TEST_FILE_CONTENT1 = "id,userId";
+    private static final String TEST_FILE_CONTENT1 = "id,userId";
     private final FileParserService fileParserService = new FileParserServiceImpl();
 
     @Test
@@ -23,7 +23,7 @@ public class FileParserTest {
 
     @Test
     public void goodFileParserTest() {
-        final String TEST_FILE_CONTENT2 = "1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian,1,1,5," +
+        final String testFileContent2 = "1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian,1,1,5," +
                 "1303862400,Good Quality Dog Food,I have bought several of the Vitality canned dog";
         List<ReviewFromFileDto> reviews = new ArrayList<>();
         ReviewFromFileDto review = new ReviewFromFileDto();
@@ -39,7 +39,7 @@ public class FileParserTest {
         review.setText("I have bought several of the Vitality canned dog");
         reviews.add(review);
         Assert.assertEquals("FileParser must correctly parse scv data file",
-                reviews, fileParserService.parse(List.of(TEST_FILE_CONTENT1, TEST_FILE_CONTENT2)));
+                reviews, fileParserService.parse(List.of(TEST_FILE_CONTENT1, testFileContent2)));
     }
 
     @Test
