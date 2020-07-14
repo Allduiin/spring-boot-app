@@ -2,7 +2,6 @@ package boot.springbootaplication.service.impl;
 
 import boot.springbootaplication.model.ReviewFromFileDto;
 import boot.springbootaplication.service.FileParserService;
-import com.sun.xml.bind.v2.model.core.ID;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,8 @@ public class FileParserServiceImpl implements FileParserService {
             review.setUserId(params[USER_ID_INDEX]);
             review.setProfileName(params[PROFILE_NAME_INDEX]);
             review.setHelpfulnessNumerator(Integer.parseInt(params[HELPFULNESS_NUMERATOR_INDEX]));
-            review.setHelpfulnessDenominator(Integer.parseInt(params[HELPFULNESS_DENOMINATOR_INDEX]));
+            review.setHelpfulnessDenominator(Integer
+                    .parseInt(params[HELPFULNESS_DENOMINATOR_INDEX]));
             review.setScore(Byte.parseByte(params[SCORE_INDEX]));
             review.setTime(Long.parseLong(params[TIME_INDEX]));
             review.setSummary(params[SUMMARY_INDEX]);
