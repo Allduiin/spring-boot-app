@@ -15,13 +15,13 @@ import org.junit.rules.TemporaryFolder;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class FileReaderTest {
-    private final String TEST_FILE_NAME = "readTest.csv";
-    private final String TEST_FILE_CONTENT1 = "Id,ProductId,UserId,ProfileName,HelpfulnessNumerator,"
+    private static final String TEST_FILE_NAME = "readTest.csv";
+    private static final String TEST_FILE_CONTENT1 = "Id,ProductId,UserId,ProfileName,HelpfulnessNumerator,"
             + "HelpfulnessDenominator,Score,Time,Summary,Text";
-    private final String TEST_FILE_CONTENT2 = "1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian,1,1,5,1303862400,Good";
+    private static final String TEST_FILE_CONTENT2 = "1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian,1,1,5,1303862400,Good";
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
-    private FileReaderService fileReaderService = new FileReaderServiceImpl();
+    private final FileReaderService fileReaderService = new FileReaderServiceImpl();
 
     @Test
     public void readFromFileTest() throws IOException {
