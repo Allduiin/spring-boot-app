@@ -1,9 +1,13 @@
 package boot.springbootaplication.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-public class ReviewFromFileDto {
+@Entity
+public class Review {
+    @Id
     private Long id;
     private String productId;
     private String userId;

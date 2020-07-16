@@ -1,6 +1,6 @@
 package boot.springbootaplication;
 
-import boot.springbootaplication.model.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewFromFileDto;
 import boot.springbootaplication.service.FileParserService;
 import boot.springbootaplication.service.impl.FileParserServiceImpl;
 import java.util.ArrayList;

@@ -1,10 +1,12 @@
 package boot.springbootaplication.service.impl;
 
-import boot.springbootaplication.model.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewFromFileDto;
 import boot.springbootaplication.service.FileParserService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FileParserServiceImpl implements FileParserService {
     private static final int ID_INDEX = 0;
     private static final int PRODUCT_ID_INDEX = 1;
