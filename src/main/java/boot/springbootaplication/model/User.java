@@ -14,12 +14,12 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String idFromFile;
-    String profileName;
-    String password;
+    private Long id;
+    private String idFromFile;
+    private String profileName;
+    private String password;
     @OneToMany
-    List<Review> reviews;
+    private List<Review> reviews;
     @ManyToMany
-    List<Role> roles;
+    private List<Role> roles;
 }

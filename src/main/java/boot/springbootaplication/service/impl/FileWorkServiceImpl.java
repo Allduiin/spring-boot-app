@@ -12,9 +12,11 @@ import boot.springbootaplication.service.RoleService;
 import boot.springbootaplication.service.UserService;
 import java.io.IOException;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class FileWorkServiceImpl implements FileWorkService {
     private static final String USER_PASSWORD = "1234";
     private final FileReaderService fileReaderService;
@@ -23,18 +25,6 @@ public class FileWorkServiceImpl implements FileWorkService {
     private final ReviewService reviewService;
     private final UserService userService;
     private final RoleService roleService;
-
-    public FileWorkServiceImpl(FileReaderService fileReaderService,
-                               FileParserService fileParserService, ReviewMapper reviewMapper,
-                               ReviewService reviewService, UserService userService,
-                               RoleService roleService) {
-        this.fileReaderService = fileReaderService;
-        this.fileParserService = fileParserService;
-        this.reviewMapper = reviewMapper;
-        this.reviewService = reviewService;
-        this.userService = userService;
-        this.roleService = roleService;
-    }
 
     @Override
     public boolean add(String path) {
