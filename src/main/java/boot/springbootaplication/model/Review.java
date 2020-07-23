@@ -1,9 +1,17 @@
 package boot.springbootaplication.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.Data;
 
 @Data
-public class ReviewFromFileDto {
+@Entity
+public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String productId;
     private String userId;
@@ -13,5 +21,6 @@ public class ReviewFromFileDto {
     private Byte score;
     private Long time;
     private String summary;
+    @Column(length = 2000)
     private String text;
 }
