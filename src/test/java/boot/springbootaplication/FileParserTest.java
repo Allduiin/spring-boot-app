@@ -27,7 +27,6 @@ public class FileParserTest {
                 "1303862400,Good Quality Dog Food,I have bought several of the Vitality canned dog";
         List<ReviewFromFileDto> reviews = new ArrayList<>();
         ReviewFromFileDto review = new ReviewFromFileDto();
-        review.setId(1L);
         review.setProductId("B001E4KFG0");
         review.setUserId("A3SGXH7AUHU8GW");
         review.setProfileName("delmartian");

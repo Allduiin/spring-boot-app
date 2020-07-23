@@ -36,7 +36,7 @@ public class FileParserServiceImpl implements FileParserService {
             review.setSummary(params[SUMMARY_INDEX]);
             StringBuilder text = new StringBuilder();
             for (int j = TEXT_INDEX; j < params.length; j++) {
-                text.append(params[i]);
+                text.append(params[j]);
             }
             review.setText(text.toString());
             result.add(review);

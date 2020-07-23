@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ReviewMapper {
     public List<Review> getReviewFromDto(List<ReviewFromFileDto> reviews) {
         List<Review> result = new ArrayList<>();
-        for (ReviewFromFileDto dto: reviews) {
+        for (ReviewFromFileDto dto : reviews) {
             Review review = new Review();
             review.setProductId(dto.getProductId());
             review.setUserId(dto.getUserId());

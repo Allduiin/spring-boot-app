@@ -11,4 +11,8 @@ public interface UserService {
     List<User> getAll();
 
     void delete(Long id);
+
+    boolean existsByProfileName(String profileName);
+
+    User findByProfileName(String profileName);
 }
