@@ -25,7 +25,6 @@ public class FileParserServiceImpl implements FileParserService {
         for (int i = 1; i < reviewStrings.size(); i++) {
             String[] params = reviewStrings.get(i).split(",");
             ReviewFromFileDto review = new ReviewFromFileDto();
-            review.setId(Long.parseLong(params[ID_INDEX]));
             review.setProductId(params[PRODUCT_ID_INDEX]);
             review.setUserId(params[USER_ID_INDEX]);
             review.setProfileName(params[PROFILE_NAME_INDEX]);
@@ -35,7 +34,11 @@ public class FileParserServiceImpl implements FileParserService {
             review.setScore(Byte.parseByte(params[SCORE_INDEX]));
             review.setTime(Long.parseLong(params[TIME_INDEX]));
             review.setSummary(params[SUMMARY_INDEX]);
-            review.setText(params[TEXT_INDEX]);
+            StringBuilder text = new StringBuilder();
+            for (int j = TEXT_INDEX; j < params.length; j++) {
+                text.append(params[i]);
+            }
+            review.setText(text.toString());
             result.add(review);
         }
         return result;

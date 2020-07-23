@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class ReviewFromFileDto {
-    private Long id;
     private String productId;
     private String userId;
     private String profileName;
