@@ -1,5 +1,6 @@
 package boot.springbootaplication;
 
+import boot.springbootaplication.mapper.ReviewMapper;
 import boot.springbootaplication.model.dto.ReviewFromFileDto;
 import boot.springbootaplication.service.FileParserService;
 import boot.springbootaplication.service.impl.FileParserServiceImpl;
@@ -13,7 +14,7 @@ import static org.junit.Assert.fail;
 
 public class FileParserTest {
     private static final String TEST_FILE_CONTENT1 = "id,userId";
-    private final FileParserService fileParserService = new FileParserServiceImpl();
+    private final FileParserService fileParserService = new FileParserServiceImpl(new ReviewMapper());
 
     @Test
     public void emptyFileParserTest() {
@@ -24,7 +25,7 @@ public class FileParserTest {
     @Test
     public void goodFileParserTest() {
         final String testFileContent2 = "1,B001E4KFG0,A3SGXH7AUHU8GW,delmartian,1,1,5," +
-                "1303862400,Good Quality Dog Food,I have bought several of the Vitality canned dog";
+                "1303862400,Good Quality Dog Food,I have bought several\",\" of the Vitality canned dog";
         List<ReviewFromFileDto> reviews = new ArrayList<>();
         ReviewFromFileDto review = new ReviewFromFileDto();
         review.setProductId("B001E4KFG0");
