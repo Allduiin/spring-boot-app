@@ -1,24 +1,25 @@
 package boot.springbootaplication.service.impl;
 
 import boot.springbootaplication.service.FileReaderService;
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Reader;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FileReaderServiceImpl implements FileReaderService {
+    private static final String[] HEADERS = {"Id", "ProductId", "UserId", "ProfileName",
+            "HelpfulnessNumerator", "HelpfulnessDenominator", "Score", "Time",
+            "Summary", "Text"};
+
     @Override
-    public List<String> readFromFile(String path) throws IOException {
-        List<String> result = new ArrayList<>();
-        String row;
-        try (BufferedReader csvReader = new BufferedReader(new FileReader(path))) {
-            while ((row = csvReader.readLine()) != null) {
-                result.add(row);
-            }
-        }
-        return result;
+    public Iterable<CSVRecord> readFromFile(String path) throws IOException {
+        Reader in = new FileReader(path);
+        return CSVFormat.DEFAULT
+                .withHeader(HEADERS)
+                .withFirstRecordAsHeader()
+                .parse(in);
     }
 }

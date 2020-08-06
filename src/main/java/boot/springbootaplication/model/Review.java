@@ -21,6 +21,6 @@ public class Review {
     private Byte score;
     private Long time;
     private String summary;
-    @Column(length = 2000)
+    @Column(length = 65000)
     private String text;
 }

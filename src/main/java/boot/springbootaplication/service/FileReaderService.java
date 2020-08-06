@@ -1,8 +1,8 @@
 package boot.springbootaplication.service;
 
 import java.io.IOException;
-import java.util.List;
+import org.apache.commons.csv.CSVRecord;
 
 public interface FileReaderService {
-    List<String> readFromFile(String path) throws IOException;
+    Iterable<CSVRecord> readFromFile(String path) throws IOException;
 }
