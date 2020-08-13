@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ReviewMapper {
-
     public List<Review> getReviewFromDto(List<ReviewFromFileDto> reviews) {
         List<Review> result = new ArrayList<>();
         for (ReviewFromFileDto dto : reviews) {
