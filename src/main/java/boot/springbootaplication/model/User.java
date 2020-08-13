@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@NoArgsConstructor
+@Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +25,8 @@ public class User {
     private List<Review> reviews;
     @ManyToMany
     private List<Role> roles;
+
+    public User(String profileName) {
+        this.profileName = profileName;
+    }
 }

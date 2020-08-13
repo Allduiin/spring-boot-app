@@ -5,6 +5,7 @@ import boot.springbootaplication.repositories.UserRepository;
 import boot.springbootaplication.service.UserService;
 import java.util.List;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -48,5 +49,11 @@ public class UserServiceImpl implements UserService {
         user.setProfileName(profileName);
         return userRepository.findOne(Example.of(user))
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public List<User> getMostActiveUsers(int limit, int offset) {
+        PageRequest pageRequest = PageRequest.of(offset, limit);
+        return userRepository.findAllMostActive(pageRequest);
     }
 }

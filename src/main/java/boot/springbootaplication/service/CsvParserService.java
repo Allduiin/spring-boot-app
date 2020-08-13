@@ -1,9 +1,9 @@
 package boot.springbootaplication.service;
 
-import boot.springbootaplication.model.dto.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewRequestDto;
 import java.io.IOException;
 import java.util.List;
 
 public interface CsvParserService {
-    List<ReviewFromFileDto> readFromFile(String path) throws IOException;
+    List<ReviewRequestDto> readFromFile(String path) throws IOException;
 }
