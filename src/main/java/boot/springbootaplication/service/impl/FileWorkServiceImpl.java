@@ -29,7 +29,7 @@ public class FileWorkServiceImpl implements FileWorkService {
     public boolean add(String path) {
         List<ReviewFromFileDto> dtos;
         try {
-             dtos = fileParserService.readFromFile(path);
+            dtos = fileParserService.readFromFile(path);
         } catch (IOException e) {
             throw new RuntimeException("IOException at fileReaderService", e);
         }
