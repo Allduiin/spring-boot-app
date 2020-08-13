@@ -1,6 +1,6 @@
 package boot.springbootaplication;
 
-import boot.springbootaplication.model.dto.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewRequestDto;
 import boot.springbootaplication.service.CsvParserService;
 import boot.springbootaplication.service.impl.CsvParserServiceImpl;
 import java.io.File;
@@ -42,14 +42,14 @@ public class CsvParserTest {
                     .forEach(pw::println);
         }
 
-        List<ReviewFromFileDto> assertedRecords = new ArrayList<>();
+        List<ReviewRequestDto> assertedRecords = new ArrayList<>();
         Iterable<CSVRecord> records = CSVFormat.DEFAULT
                 .withHeader(HEADERS)
                 .withFirstRecordAsHeader()
                 .parse(new FileReader(file.getPath()));
-        ReviewFromFileDto recordDto;
+        ReviewRequestDto recordDto;
         for (CSVRecord record : records) {
-            recordDto = new ReviewFromFileDto();
+            recordDto = new ReviewRequestDto();
             recordDto.setProductId(record.get("ProductId"));
             recordDto.setUserId(record.get("UserId"));
             recordDto.setProfileName(record.get("ProfileName"));
@@ -64,7 +64,7 @@ public class CsvParserTest {
             assertedRecords.add(recordDto);
         }
 
-        List<ReviewFromFileDto> realRecords = csvParserService.readFromFile(file.getPath());
+        List<ReviewRequestDto> realRecords = csvParserService.readFromFile(file.getPath());
         Assert.assertEquals("FileReader must correctly read from file",
                 assertedRecords.toString(),
                 realRecords.toString());

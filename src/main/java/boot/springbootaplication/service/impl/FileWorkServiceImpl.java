@@ -4,7 +4,7 @@ import boot.springbootaplication.mapper.ReviewMapper;
 import boot.springbootaplication.model.Review;
 import boot.springbootaplication.model.Role;
 import boot.springbootaplication.model.User;
-import boot.springbootaplication.model.dto.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewRequestDto;
 import boot.springbootaplication.service.CsvParserService;
 import boot.springbootaplication.service.FileWorkService;
 import boot.springbootaplication.service.ReviewService;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class FileWorkServiceImpl implements FileWorkService {
     private static final String USER_PASSWORD = "1234";
-    private final CsvParserService fileParserService;
+    private final CsvParserService csvParserService;
     private final ReviewMapper reviewMapper;
     private final ReviewService reviewService;
     private final UserService userService;
@@ -27,13 +27,13 @@ public class FileWorkServiceImpl implements FileWorkService {
 
     @Override
     public boolean add(String path) {
-        List<ReviewFromFileDto> dtos;
+        List<ReviewRequestDto> dtos;
         try {
-             dtos = fileParserService.readFromFile(path);
+            dtos = csvParserService.readFromFile(path);
         } catch (IOException e) {
             throw new RuntimeException("IOException at fileReaderService", e);
         }
-        List<Review> reviews = reviewMapper.getReviewFromDto(dtos);
+        List<Review> reviews = reviewMapper.getReviewsFromDto(dtos);
         for (Review review : reviews) {
             Review savedReview = reviewService.save(review);
             if (userService.existsByProfileName(review.getProfileName())) {
