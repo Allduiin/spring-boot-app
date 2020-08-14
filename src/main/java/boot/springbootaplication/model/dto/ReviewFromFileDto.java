@@ -3,8 +3,7 @@ package boot.springbootaplication.model.dto;
 import lombok.Data;
 
 @Data
-public class ReviewResponseDto {
-    private Long id;
+public class ReviewFromFileDto {
     private String productId;
     private String userId;
     private String profileName;
