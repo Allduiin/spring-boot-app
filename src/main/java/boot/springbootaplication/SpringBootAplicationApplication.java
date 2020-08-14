@@ -9,7 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class SpringBootAplicationApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext run = SpringApplication.run(SpringBootAplicationApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication
+                .run(SpringBootAplicationApplication.class, args);
         RoleService roleService = run.getBean(RoleService.class);
         roleService.save(new Role(Role.RoleName.USER));
         roleService.save(new Role(Role.RoleName.ADMIN));
