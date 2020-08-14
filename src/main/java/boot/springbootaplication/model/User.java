@@ -2,6 +2,7 @@ package boot.springbootaplication.model;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class User {
     private String idFromFile;
     private String profileName;
     private String password;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Review> reviews;
     @ManyToMany
     private List<Role> roles;
