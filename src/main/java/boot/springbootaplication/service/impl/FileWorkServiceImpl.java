@@ -2,8 +2,6 @@ package boot.springbootaplication.service.impl;
 
 import boot.springbootaplication.mapper.ReviewMapper;
 import boot.springbootaplication.model.Review;
-import boot.springbootaplication.model.Role;
-import boot.springbootaplication.model.User;
 import boot.springbootaplication.model.dto.ReviewRequestDto;
 import boot.springbootaplication.service.CsvParserService;
 import boot.springbootaplication.service.FileWorkService;

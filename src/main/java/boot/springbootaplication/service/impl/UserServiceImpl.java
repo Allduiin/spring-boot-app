@@ -4,7 +4,6 @@ import boot.springbootaplication.model.User;
 import boot.springbootaplication.repositories.UserRepository;
 import boot.springbootaplication.service.UserService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

@@ -21,11 +21,11 @@ public class UserController {
 
     @GetMapping
     public List<UserResponseDto> getMostActiveUsers(
-        @RequestParam(defaultValue = "1000") int limit,
-        @RequestParam(defaultValue = "0") int offset) {
-            List<User> mostActiveUsers = userService.getMostActiveUsers(limit, offset);
-            return mostActiveUsers.stream()
-                    .map(userMapper::convertToResponseDto)
-                    .collect(Collectors.toList());
+            @RequestParam(defaultValue = "1000") int limit,
+            @RequestParam(defaultValue = "0") int offset) {
+        List<User> mostActiveUsers = userService.getMostActiveUsers(limit, offset);
+        return mostActiveUsers.stream()
+                .map(userMapper::convertToResponseDto)
+                .collect(Collectors.toList());
     }
 }
