@@ -35,18 +35,7 @@ public class FileWorkServiceImpl implements FileWorkService {
         }
         List<Review> reviews = reviewMapper.getReviewsFromDto(dtos);
         for (Review review : reviews) {
-            Review savedReview = reviewService.save(review);
-            if (userService.existsByProfileName(review.getProfileName())) {
-                userService.findByProfileName(review.getProfileName()).getReviews().add(review);
-            } else {
-                User user = new User();
-                user.setProfileName(review.getProfileName());
-                user.setPassword(USER_PASSWORD);
-                user.setIdFromFile(review.getUserId());
-                user.setReviews(List.of(savedReview));
-                user.setRoles(List.of(roleService.getByRoleName(Role.RoleName.USER)));
-                userService.save(user);
-            }
+            reviewService.save(review);
         }
         return true;
     }
