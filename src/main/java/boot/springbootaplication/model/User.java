@@ -21,7 +21,7 @@ public class User {
     private String idFromFile;
     private String profileName;
     private String password;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     private List<Review> reviews;
     @ManyToMany
     private List<Role> roles;

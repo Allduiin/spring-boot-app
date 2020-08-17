@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
             User user = new User();
             user.setProfileName(review.getProfileName());
             user.setPassword(USER_PASSWORD);
-            user.setIdFromFile(review.getUserId());
+            user.setIdFromFile(review.getUserIdFromFile());
             user.setReviews(List.of(savedReview));
             user.setRoles(List.of(roleService.getByRoleName(Role.RoleName.USER)));
             userService.save(user);

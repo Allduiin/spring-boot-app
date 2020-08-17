@@ -14,7 +14,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String productId;
-    private String userId;
+    private String userIdFromFile;
     private String profileName;
     private Integer helpfulnessNumerator;
     private Integer helpfulnessDenominator;
