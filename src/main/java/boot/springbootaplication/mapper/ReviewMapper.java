@@ -21,7 +21,7 @@ public class ReviewMapper {
     public Review getReviewFromReviewRequestDto(ReviewRequestDto dto) {
         Review review = new Review();
         review.setProductId(dto.getProductId());
-        review.setUserId(dto.getUserId());
+        review.setUserIdFromFile(dto.getUserId());
         review.setProfileName(dto.getProfileName());
         review.setHelpfulnessNumerator(dto.getHelpfulnessNumerator());
         review.setHelpfulnessDenominator(dto.getHelpfulnessDenominator());
@@ -36,7 +36,7 @@ public class ReviewMapper {
         ReviewResponseDto dto = new ReviewResponseDto();
         dto.setId(review.getId());
         dto.setProductId(review.getProductId());
-        dto.setUserId(review.getUserId());
+        dto.setUserId(review.getUserIdFromFile());
         dto.setProfileName(review.getProfileName());
         dto.setHelpfulnessNumerator(review.getHelpfulnessNumerator());
         dto.setHelpfulnessDenominator(review.getHelpfulnessDenominator());
