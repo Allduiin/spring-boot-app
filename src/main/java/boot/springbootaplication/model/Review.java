@@ -8,8 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "reviews")
 public class Review {
     @Id
@@ -27,5 +29,4 @@ public class Review {
     private String text;
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-
 }
