@@ -4,7 +4,6 @@ import boot.springbootaplication.model.Review;
 import boot.springbootaplication.model.Role;
 import boot.springbootaplication.model.User;
 import boot.springbootaplication.model.dto.UserResponseDto;
-import boot.springbootaplication.repositories.ReviewRepository;
 import boot.springbootaplication.service.RoleService;
 import java.util.List;
 import lombok.AllArgsConstructor;
