@@ -2,19 +2,21 @@ package boot.springbootaplication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String productId;
-    private String userId;
+    private String userIdFromFile;
     private String profileName;
     private Integer helpfulnessNumerator;
     private Integer helpfulnessDenominator;
@@ -23,4 +25,7 @@ public class Review {
     private String summary;
     @Column(length = 65000)
     private String text;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
 }

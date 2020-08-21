@@ -1,6 +1,6 @@
 package boot.springbootaplication.service.impl;
 
-import boot.springbootaplication.model.dto.ReviewFromFileDto;
+import boot.springbootaplication.model.dto.ReviewRequestDto;
 import boot.springbootaplication.service.CsvParserService;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class CsvParserServiceImpl implements CsvParserService {
             "Summary", "Text"};
 
     @Override
-    public List<ReviewFromFileDto> readFromFile(String path) throws IOException {
+    public List<ReviewRequestDto> readFromFile(String path) throws IOException {
         Reader in = new FileReader(path);
         return parse(CSVFormat.DEFAULT
                 .withHeader(HEADERS)
@@ -26,13 +26,13 @@ public class CsvParserServiceImpl implements CsvParserService {
                 .parse(in));
     }
 
-    private List<ReviewFromFileDto> parse(Iterable<CSVRecord> records) {
-        List<ReviewFromFileDto> recordDtos = new ArrayList<>();
-        ReviewFromFileDto recordDto;
+    private List<ReviewRequestDto> parse(Iterable<CSVRecord> records) {
+        List<ReviewRequestDto> recordDtos = new ArrayList<>();
+        ReviewRequestDto recordDto;
         for (CSVRecord record : records) {
-            recordDto = new ReviewFromFileDto();
+            recordDto = new ReviewRequestDto();
             recordDto.setProductId(record.get("ProductId"));
-            recordDto.setUserId(record.get("UserId"));
+            recordDto.setUserIdFromFile(record.get("UserId"));
             recordDto.setProfileName(record.get("ProfileName"));
             recordDto.setHelpfulnessNumerator(Integer
                     .parseInt(record.get("HelpfulnessNumerator")));

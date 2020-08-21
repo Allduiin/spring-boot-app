@@ -15,4 +15,6 @@ public interface UserService {
     boolean existsByProfileName(String profileName);
 
     User findByProfileName(String profileName);
+
+    List<User> getMostActiveUsers(int limit, int offset);
 }
