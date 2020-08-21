@@ -1,11 +1,10 @@
 package boot.springbootaplication.service.impl;
 
+import boot.springbootaplication.mapper.UserMapper;
 import boot.springbootaplication.model.Review;
-import boot.springbootaplication.model.Role;
 import boot.springbootaplication.model.User;
 import boot.springbootaplication.repositories.ReviewRepository;
 import boot.springbootaplication.service.ReviewService;
-import boot.springbootaplication.service.RoleService;
 import boot.springbootaplication.service.UserService;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -14,26 +13,23 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
-    private static final String USER_PASSWORD = "1234";
-    private final RoleService roleService;
     private final ReviewRepository reviewRepository;
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @Override
     public Review save(Review review) {
-        Review savedReview = reviewRepository.saveAndFlush(review);
         if (userService.existsByProfileName(review.getProfileName())) {
-            userService.findByProfileName(review.getProfileName()).getReviews().add(review);
+            review.setUser(userService.findByProfileName(review.getProfileName()));
+            return reviewRepository.saveAndFlush(review);
         } else {
-            User user = new User();
-            user.setProfileName(review.getProfileName());
-            user.setPassword(USER_PASSWORD);
-            user.setIdFromFile(review.getUserIdFromFile());
-            user.setReviews(List.of(savedReview));
-            user.setRoles(List.of(roleService.getByRoleName(Role.RoleName.USER)));
-            userService.save(user);
+            Review savedReview = reviewRepository.saveAndFlush(review);
+            User user = userMapper.createUserFromReview(review);
+            user = userService.save(user);
+            savedReview.setUser(user);
+            reviewRepository.save(savedReview);
+            return savedReview;
         }
-        return savedReview;
     }
 
     @Override

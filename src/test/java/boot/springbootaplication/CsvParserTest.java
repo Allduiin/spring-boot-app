@@ -51,7 +51,7 @@ public class CsvParserTest {
         for (CSVRecord record : records) {
             recordDto = new ReviewRequestDto();
             recordDto.setProductId(record.get("ProductId"));
-            recordDto.setUserId(record.get("UserId"));
+            recordDto.setUserIdFromFile(record.get("UserId"));
             recordDto.setProfileName(record.get("ProfileName"));
             recordDto.setHelpfulnessNumerator(Integer
                     .parseInt(record.get("HelpfulnessNumerator")));

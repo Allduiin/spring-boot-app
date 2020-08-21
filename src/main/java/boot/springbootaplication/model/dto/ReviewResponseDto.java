@@ -6,7 +6,7 @@ import lombok.Data;
 public class ReviewResponseDto {
     private Long id;
     private String productId;
-    private String userId;
+    private String userIdFromFile;
     private String profileName;
     private Integer helpfulnessNumerator;
     private Integer helpfulnessDenominator;
@@ -14,4 +14,5 @@ public class ReviewResponseDto {
     private Long time;
     private String summary;
     private String text;
+    private Long userId;
 }
