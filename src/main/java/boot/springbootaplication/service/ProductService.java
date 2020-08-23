@@ -1,8 +1,8 @@
 package boot.springbootaplication.service;
 
-import boot.springbootaplication.model.dto.ProductResponseDto;
+import boot.springbootaplication.model.Review;
 import java.util.List;
 
 public interface ProductService {
-    List<ProductResponseDto> findMostReviewedProducts(int limit, int offset);
+    List<Review> findMostReviewedProducts(int limit, int offset);
 }

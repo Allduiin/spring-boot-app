@@ -31,4 +31,9 @@ public class User {
     private List<Role> roles;
     @Transient
     private int numberOfReviews;
+
+    public User(String profileName, int numberOfReviews) {
+        this.profileName = profileName;
+        this.numberOfReviews = numberOfReviews;
+    }
 }
