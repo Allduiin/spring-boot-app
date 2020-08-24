@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    @Query("SELECT new reviews (r.productId, COUNT(reviews.productId)) "
-            + "FROM reviews r GROUP BY r.productId ORDER BY COUNT(reviews.productId) DESC")
-    List<Review> findMostReviewedProducts(PageRequest pageRequest);
+    @Query("SELECT r.productId FROM reviews r ")
+            /**, COUNT(r.productId)
+            + "GROUP BY r.productId ORDER BY COUNT(r.productId) DESC")*/
+    List<Object[]> findMostReviewedProducts(PageRequest pageRequest);
 }

@@ -1,6 +1,5 @@
 package boot.springbootaplication.service.impl;
 
-import boot.springbootaplication.model.Review;
 import boot.springbootaplication.repositories.ReviewRepository;
 import boot.springbootaplication.service.ProductService;
 import java.util.List;
@@ -12,7 +11,7 @@ public class ProductServiceImpl implements ProductService {
     private ReviewRepository reviewRepository;
 
     @Override
-    public List<Review> findMostReviewedProducts(int limit, int offset) {
+    public List<Object[]> findMostReviewedProducts(int limit, int offset) {
         PageRequest pageRequest = PageRequest.of(offset, limit);
         return reviewRepository.findMostReviewedProducts(pageRequest);
     }

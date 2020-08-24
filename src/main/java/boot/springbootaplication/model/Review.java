@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -30,11 +29,4 @@ public class Review {
     private String text;
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-    @Transient
-    private Long numberOfReviews;
-
-    public Review(String productId, Long numberOfReviews) {
-        this.productId = productId;
-        this.numberOfReviews = numberOfReviews;
-    }
 }
