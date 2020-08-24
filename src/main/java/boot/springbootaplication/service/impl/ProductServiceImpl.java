@@ -3,10 +3,12 @@ package boot.springbootaplication.service.impl;
 import boot.springbootaplication.repositories.ReviewRepository;
 import boot.springbootaplication.service.ProductService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private ReviewRepository reviewRepository;
 
